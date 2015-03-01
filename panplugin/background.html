@@ -1,0 +1,10 @@
+<script>
+chrome.extension.onRequest.addListener(function(request, sender) {
+    chrome.pageAction.show(sender.tab.id);
+     
+    chrome.pageAction.onClicked.addListener(function(tab){
+        chrome.tabs.update(tab.id, {url:request.href});
+    });
+});
+console.log("background running!");
+</script>
